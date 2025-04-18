@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="exampy",
-    version="0.2",
+    name="keeplerite",
+    version="0.1",
     author="Irmak Akdogan",
     author_email="irmak.akdogan@yale.edu",
     description="A package for retrieving TPF, lightcurves and periodograms from lightkurve",

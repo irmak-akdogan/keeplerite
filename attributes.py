@@ -234,7 +234,7 @@ class PD():
         sm.plot(linewidth=0.9,  scale=scale, color= "red",   ax = ax, label = "Smoothed")
 
         if sn : 
-            ax.set_ylabel("Signal to Noise Ratio") #this does not work lmao
+            ax.set_ylabel("Signal to Noise Ratio") 
         
         ax.legend()
         ax.set_xlim(self.minf, self.maxf)

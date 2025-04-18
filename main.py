@@ -74,7 +74,7 @@ st.sidebar.markdown("## Lightcurve Settings")
 
 stitch_all_q     = st.sidebar.checkbox('Stitch All Quarters', value = False)
 
-filter_percent   = st.sidebar.number_input('Outlier Filter Percentage', min_value=1, max_value=100, value=20, step=10)
+filter_percent   = st.sidebar.number_input('Outlier Filter Percentage', min_value=0.0, max_value=100.0, value=20.0, step=10.0)
 
 st.header("Lightcurve")
 
