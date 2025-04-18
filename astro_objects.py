@@ -7,6 +7,44 @@ from attributes import TPF, LC, PD
 
 class Astro_Objects(): 
 
+    """
+    A class for handling Kepler target pixel files, lightcurves, and periodograms
+    associated with a specific astronomical object.
+
+    Attributes
+    ----------
+    search : lightkurve.search.SearchResult
+        The search result object containing TPF files across quarters.
+    name : str
+        Name of the target object.
+    tpf : TPF or None
+        TPF object containing pixel file data and aperture information.
+    lc : LC or None
+        LC object containing the processed lightcurve.
+    pd : PD or None
+        PD object containing the periodogram and FAP.
+    quarters : ndarray
+        Array of available quarter numbers.
+
+    Methods
+    -------
+    get_quarters()
+        Extracts and returns a list of available quarters from the search result.
+
+    filter_quarter(quarter_number)
+        Returns the subset of the search result corresponding to a specific quarter.
+
+    set_tpf(quarter=0)
+        Downloads and sets the TPF object for a given quarter.
+
+    set_lc(stitch, aperture_type="pipeline", threshold=1)
+        Constructs and sets the LC object from the TPF data.
+        If stitch is True, it stitches data from all available quarters.
+        
+    set_pd(minf=1, maxf=150, num=10)
+        Generates and sets the PD object using the lightcurve and simulated FAP.
+    """
+
     def __init__(self, search, target_name = None, ):
 
         self.name = target_name
@@ -52,8 +90,7 @@ class Astro_Objects():
         if len(filtered) == 0:
             print("No target pixel file found. Try a different quarter.")
         else: 
-            #tpf = filtered.download(download_dir="/Users/student/Desktop/lightkurve")
-            tpf = filtered.download(download_dir="./lightkurve")
+            tpf = filtered.download(download_dir="./keeplerite_files")
             self.tpf = TPF(tpf, self.name , quarter) 
 
     def set_lc(self, stitch, aperture_type = "pipeline", threshold = 1 ): 
@@ -63,7 +100,7 @@ class Astro_Objects():
    
         if stitch:
 
-            all_tpfs = self.search.download_all(download_dir="./lightkurve")
+            all_tpfs = self.search.download_all(download_dir="./keeplerite_files")
 
             lcs = []
 

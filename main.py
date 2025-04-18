@@ -3,15 +3,16 @@ import streamlit as st
 import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
-from importlib.resources import files
 
 from astro_objects import Astro_Objects
     
+st.set_page_config(page_title="Keeplerite", page_icon=":sunny:")
+
 st.title('Kepler Data Visualizer')
 
 st.markdown("""
- * Use the menu at left to search an object and adjust plotting settings
- * Your plots will appear below
+ * Use the menu on the left to search an object and adjust plotting settings.
+ * Your plots will appear below! 
 """)
 
 st.sidebar.markdown("## Object Settings")
@@ -28,11 +29,19 @@ def search_object(t_name, exptime):
     
     return search
 
-search = search_object(name, exp_time)
-object = Astro_Objects(search , target_name = name )
+if "astro_obj" not in st.session_state or st.session_state["name"] != name:
 
-search_state = st.text('Object found!')
+    search = search_object(name, exp_time)
+    object = Astro_Objects(search, target_name=name)
+    st.session_state["astro_obj"] = object
+    st.session_state["name"] = name
 
+else:
+    object = st.session_state["astro_obj"]
+
+
+
+search_state.text('Object found!')
 
 st.sidebar.markdown("## Target Pixel File Settings")
 
@@ -40,6 +49,7 @@ quarter_to_display = st.sidebar.selectbox('Quarter', object.quarters)
 
 try:
     object.set_tpf(quarter = quarter_to_display)
+
 except:
     st.warning('There was a problem creating your Target Pixel File. Try a different setting.')
     st.stop()
@@ -69,10 +79,10 @@ filter_percent   = st.sidebar.number_input('Outlier Filter Percentage', min_valu
 st.header("Lightcurve")
 
 try:
-    object.set_lc( stitch = stitch_all_q, 
+    object.set_lc(stitch = stitch_all_q, 
                 aperture_type = aperture_option,
                 threshold = std)
-
+    object.lc.filter_lcs(filter_percent)
     fig2, _ = object.lc.plot_lc()
     st.pyplot(fig2)
 
@@ -82,7 +92,7 @@ except:
 
 st.sidebar.markdown("## Periodogram Settings")
 
-scales = ['linear', 'log', 'symlog', 'asinh', 'logit', 'function', 'functionlog']
+scales = ['log', 'linear', 'symlog', 'asinh', 'logit', 'function', 'functionlog']
 
 freq_range = st.sidebar.slider('Frequency Range', min_value=1, max_value=1000, value=(1,150))
 scale  = st.sidebar.selectbox('Select Scale', scales)
@@ -94,8 +104,9 @@ st.header("Periodogram")
 
 try: 
     object.set_pd( minf = freq_range[0], maxf= freq_range[1], num = fap)
-    fig3, _ = object.pd.plot_pd(smooth = smoothing, scale = scale)
+    fig3, _ = object.pd.plot_pd(smooth = smoothing, scale = scale, sn  = s_to_n)
     st.pyplot(fig3)
+
 except:
     st.warning('There was a problem creating your Periodogram. Try a different setting.')
     st.stop()
@@ -105,9 +116,6 @@ except:
 #TGLC  <333333
  
 # to do acil: 
-#   add outlier removal 
-#   Plot S/N 
-#   Write docstrings and make a jupyter notebook about it :/ 
-#   use pip reqs to make a requirements file 
+#   make a jupyter notebook about it :/ 
 
 #   sort by time value or quarter before you stitch - find np.arg_sort 
