@@ -2,6 +2,9 @@ import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
 
+from pathlib import Path
+tmp_dir = Path("/tmp")
+
 from attributes import TPF, LC, PD
 
 
@@ -90,7 +93,7 @@ class Astro_Objects():
         if len(filtered) == 0:
             print("No target pixel file found. Try a different quarter.")
         else: 
-            tpf = filtered.download(download_dir="./keeplerite_files")
+            tpf = filtered.download(download_dir=tmp_dir)
             self.tpf = TPF(tpf, self.name , quarter) 
 
     def set_lc(self, stitch, aperture_type = "pipeline", threshold = 1 ): 
@@ -100,7 +103,7 @@ class Astro_Objects():
    
         if stitch:
 
-            all_tpfs = self.search.download_all(download_dir="./keeplerite_files")
+            all_tpfs = self.search.download_all(download_dir=tmp_dir)
 
             lcs = []
 
