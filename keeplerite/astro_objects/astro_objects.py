@@ -90,7 +90,7 @@ class Astro_Objects():
         if len(filtered) == 0:
             print("No target pixel file found. Try a different quarter.")
         else: 
-            tpf = filtered.download()
+            tpf = filtered.download(download_dir="/tmp" , cache = False)
             self.tpf = TPF(tpf, self.name , quarter) 
 
     def set_lc(self, stitch, aperture_type = "pipeline", threshold = 1 ): 
@@ -100,7 +100,7 @@ class Astro_Objects():
    
         if stitch:
 
-            all_tpfs = self.search.download_all(cache=False)
+            all_tpfs = self.search.download_all(download_dir="/tmp" , cache=False)
 
             lcs = []
 

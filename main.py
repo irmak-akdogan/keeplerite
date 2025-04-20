@@ -43,8 +43,6 @@ if "astro_obj" not in st.session_state or st.session_state["name"] != name:
 else:
     object = st.session_state["astro_obj"]
 
-
-
 search_state.text('Object found!')
 
 st.sidebar.markdown("## Target Pixel File Settings")
@@ -82,17 +80,17 @@ filter_percent   = st.sidebar.number_input('Outlier Filter Percentage', min_valu
 
 st.header("Lightcurve")
 
-try:
-    object.set_lc(stitch = stitch_all_q, 
-                aperture_type = aperture_option,
-                threshold = std)
-    object.lc.filter_lcs(filter_percent)
-    fig2, _ = object.lc.plot_lc()
-    st.pyplot(fig2)
+#try:
+object.set_lc(stitch = stitch_all_q, 
+            aperture_type = aperture_option,
+            threshold = std)
+object.lc.filter_lcs(filter_percent)
+fig2, _ = object.lc.plot_lc()
+st.pyplot(fig2)
 
-except:
-    st.warning('There was a problem creating your Lightcurve. Try a different setting.')
-    st.stop()
+#except:
+  #  st.warning('There was a problem creating your Lightcurve. Try a different setting.')
+ #   st.stop()
 
 st.sidebar.markdown("## Periodogram Settings")
 
@@ -116,10 +114,6 @@ except:
     st.stop()
 
 
-#tpf.interact_sky  - gaia targetlerını üzerine eklicek
-#TGLC  <333333
  
-# to do acil: 
-#   make a jupyter notebook about it :/ 
-
+# to do: 
 #   sort by time value or quarter before you stitch - find np.arg_sort 
