@@ -100,7 +100,7 @@ class Astro_Objects():
    
         if stitch:
 
-            all_tpfs = self.search.download_all()
+            all_tpfs = self.search.download_all(cache=False)
 
             lcs = []
 
