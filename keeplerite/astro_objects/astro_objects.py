@@ -2,7 +2,7 @@ import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
 
-from attributes import TPF, LC, PD
+from .attributes import TPF, LC, PD
 
 
 class Astro_Objects(): 

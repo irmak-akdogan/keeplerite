@@ -1,1 +1,1 @@
-from astro_objects import Astro_Objects , TPF , LC , PD 
+from .astro_objects import Astro_Objects , TPF , LC , PD 
