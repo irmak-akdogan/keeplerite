@@ -2,9 +2,6 @@ import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
 
-#from pathlib import Path
-#tmp_dir = Path("/tmp")
-
 from attributes import TPF, LC, PD
 
 

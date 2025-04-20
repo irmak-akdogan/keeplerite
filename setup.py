@@ -12,5 +12,5 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=["keeplerite","keeplerite/astronomyobject"],
-    install_requires=["numpy"]
+    install_requires=["numpy","lightkurve","matplotlib"]
 )
