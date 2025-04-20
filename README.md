@@ -10,6 +10,8 @@ Welcome to keeplerite, a package for easy visualization of Kepler data.
 
 This package is not on pyPI yet. However, you can install the package from this github page, go to "Code" button and choose "Download ZIP". After that, open up the ZIP file.
 
+    $ from /path/to/keeplerite import Astro_Objects 
+
 
 ## Streamlit App 
 

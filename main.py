@@ -4,7 +4,11 @@ import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
 
+import sys
+from pathlib import Path
+
 from keeplerite.astro_objects import Astro_Objects
+
     
 st.set_page_config(page_title="Keeplerite", page_icon=":sunny:")
 
