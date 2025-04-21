@@ -4,7 +4,7 @@
 
 This is package for easy visualization of Kepler data. It can be either imported to a jupyter notebook or used on streamlit with interactive tools. 
 
-## What does it do? 
+## What does it do? 
 
 `keeplerite` simplifies working with Kepler space telescope data by providing a convenient interface to visualize and analyze light curves, target pixel files (TPFs), and periodograms by using the `lightkurve` library under the hood.
 
@@ -15,7 +15,7 @@ By few lines of code or using the Streamlit app, you can:
 - Compute and visualize periodograms to study periodic signals  
 - Propagate flux uncertainties using simulations  
 
-## Installation 
+## Installation
 
 This package is not on pyPI yet, so it is not installable by pip. However, you can download the package from this github page, go to "Code" button and choose "Download ZIP". After that, open up the ZIP file. Use the block below to import it in a jupyter notebook. For more guide on how to use keeplerite on jupyter, check out tutorial.ipynb ! 
 

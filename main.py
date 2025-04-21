@@ -80,17 +80,17 @@ filter_percent   = st.sidebar.number_input('Outlier Filter Percentage', min_valu
 
 st.header("Lightcurve")
 
-#try:
-object.set_lc(stitch = stitch_all_q, 
-            aperture_type = aperture_option,
-            threshold = std)
-object.lc.filter_lcs(filter_percent)
-fig2, _ = object.lc.plot_lc()
-st.pyplot(fig2)
+try:
+    object.set_lc(stitch = stitch_all_q, 
+                aperture_type = aperture_option,
+                threshold = std)
+    object.lc.filter_lcs(filter_percent)
+    fig2, _ = object.lc.plot_lc()
+    st.pyplot(fig2)
 
-#except:
-  #  st.warning('There was a problem creating your Lightcurve. Try a different setting.')
- #   st.stop()
+except:
+    st.warning('There was a problem creating your Lightcurve. Try a different setting.')
+    st.stop()
 
 st.sidebar.markdown("## Periodogram Settings")
 
