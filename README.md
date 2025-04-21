@@ -15,7 +15,7 @@ By few lines of code or using the Streamlit app, you can:
 - Compute and visualize periodograms to study periodic signals  
 - Propagate flux uncertainties using simulations  
 
-## Installation
+## Installation
 
 This package is not on pyPI yet, so it is not installable by pip. However, you can download the package from this github page, go to "Code" button and choose "Download ZIP". After that, open up the ZIP file. Use the block below to import it in a jupyter notebook. For more guide on how to use keeplerite on jupyter, check out tutorial.ipynb ! 
 
