@@ -49,7 +49,6 @@ To be able to save the fits files retrieved from keeplerite, run the app faster,
 This package relies on:
 
 * lightkurve
-* astropy
 * numpy
 * matplotlib
 * streamlit
