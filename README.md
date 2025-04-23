@@ -42,7 +42,7 @@ There are some advantages to running the app locally instead of online. There mi
 To be able to save the fits files retrieved from keeplerite, run the app faster, and to avoid runtime errors, you can also use the streamlit app locally on your own machine. If you run these commands on your terminal, it will automatically take you to a web page where keeplerite is run locally. 
 
     $ cd /path/to/where/you/keep/keeplerite
-    $ streamlit run webapp.py 
+    $ streamlit run main.py 
 
 ## Dependencies 
 

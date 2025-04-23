@@ -56,10 +56,16 @@ except:
     st.warning('There was a problem creating your Target Pixel File. Try a different setting.')
     st.stop()
 
+
+ra = object.tpf.data.ra
+dec = object.tpf.data.dec
+st.text(f" RA: {ra}")
+st.text(f" Dec: {dec}")
+
 aperture_option    = st.sidebar.selectbox('Aperture', ["pipeline", "threshold", "all", "custom"])
 
 if aperture_option == "custom": 
-    std = st.sidebar.number_input("Standard Deviations From Mean", 
+    std = st.sidebar.number_input("Background Threshold", 
                                   min_value=1, max_value=5, value=1, step=1)
 else:
     std = 1 
@@ -112,8 +118,3 @@ try:
 except:
     st.warning('There was a problem creating your Periodogram. Try a different setting.')
     st.stop()
-
-
- 
-# to do: 
-#   sort by time value or quarter before you stitch - find np.arg_sort 

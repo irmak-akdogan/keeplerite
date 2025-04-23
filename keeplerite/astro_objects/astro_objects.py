@@ -110,7 +110,7 @@ class Astro_Objects():
                 else:
                     aperture_mask = aperture_type 
 
-                lc = tpf.to_lightcurve(aperture_mask=aperture_mask)
+                lc = tpf.to_lightcurve(aperture_mask=aperture_mask).flatten()
                 lcs.append(lc)
             
             collection = lk.LightCurveCollection(lcs)
@@ -119,7 +119,7 @@ class Astro_Objects():
             self.lc = LC(stithced_lk, name = self.name)
             
         else: 
-            lc = self.tpf.data.to_lightcurve(aperture_mask = self.tpf.aperture).normalize()
+            lc = self.tpf.data.to_lightcurve(aperture_mask = self.tpf.aperture).normalize().flatten()
             self.lc = LC(lc, self.name )
 
     
